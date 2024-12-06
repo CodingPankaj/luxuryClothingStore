@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Jost", serif;
+}
+
+:root {
+  --primary-bg-color: 21, 21, 21;
+  --secondary-bg-color: 255, 255, 255;
+  --darken-bg-color: 247, 247, 247;
+
+  --primary-text-color: 21, 21, 21;
+  --secondary-text-color: 255, 255, 255;
+
+  --primary-border-color: 226, 226, 226;
+  --secondary-border-color: 222, 222, 222;
+}
+
+.primary-btn {
+  @apply border-primary-text-color before:bg-primary-bg-color hover:text-secondary-text-color relative mt-2 w-full overflow-hidden border px-4 py-2 tracking-wide transition-all duration-200 before:absolute before:left-0 before:top-full before:z-[-1] before:h-full before:w-full before:transition-all before:duration-300 hover:before:top-0 lg:py-3;
+}
+
+.main-div {
+  @apply px-[5px] md:px-3 lg:px-4;
+}
+
+.main-heading {
+  @apply text-primary-text-color py-5 text-center text-4xl font-medium tracking-wide md:text-5xl lg:text-6xl;
+}
