@@ -10,12 +10,10 @@ export const Shop = () => {
   const consumerKey = import.meta.env.VITE_REACT_APP_CONSUMER_KEY;
   const consumerSecret = import.meta.env.VITE_REACT_APP_CONSUMER_SECRET;
 
-  console.log(consumerKey);
-
   const getProductData = async () => {
     try {
       const res = await axios.get(
-        "https://dianaluxury.com/wp-json/wc/v3/products",
+        "https://store.techmeter.in/wp-json/wc/v3/products",
         {
           auth: {
             username: consumerKey,
