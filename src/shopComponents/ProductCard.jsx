@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { BsHeart } from "react-icons/bs";
+import { useContext, useState } from "react";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
+import { MainContext } from "../context/MainContext";
 
 export const ProductCard = ({ product }) => {
   return (
-    <div className="w-full">
+    <div className="flex w-full flex-col">
       <ProductCardImage product={product} />
       <ProductDetails product={product} />
     </div>
@@ -11,6 +12,7 @@ export const ProductCard = ({ product }) => {
 };
 
 const ProductCardImage = ({ product }) => {
+  const [isWishlist, setIsWishlist] = useState(false);
   const { images } = product;
 
   const [productImage, setProductImage] = useState(images[0].src);
@@ -28,32 +30,46 @@ const ProductCardImage = ({ product }) => {
       <span className="absolute left-2 top-2 rounded-full bg-primary-bg-color px-2 py-[2px] text-[10px] font-semibold uppercase text-secondary-text-color">
         Sale
       </span>
-      <button className="absolute right-2 top-2 text-lg text-primary-text-color">
-        <BsHeart />
+      <button
+        onClick={() => setIsWishlist(!isWishlist)}
+        className="absolute right-2 top-2 text-lg text-primary-text-color"
+      >
+        {isWishlist ? <BsHeartFill /> : <BsHeart />}
       </button>
     </div>
   );
 };
 
 const ProductDetails = ({ product }) => {
-  const { name, category, price, brand } = product;
+  const { name, category, price } = product;
   return (
-    <div className="mt-3 flex flex-col gap-[5px]">
-      <h5 className="text-xs tracking-wide text-primary-text-color">{brand}</h5>
-      <h3 className="text-base tracking-wide text-primary-text-color">
+    <div className="mt-3 flex grow flex-col gap-[5px]">
+      <h5 className="text-xs tracking-wide text-primary-text-color">
+        Luxury Brand
+      </h5>
+      <h3 className="line-clamp-2 text-base tracking-wide text-primary-text-color">
         {name}
       </h3>
-      <h3 className="text-base tracking-wide text-primary-text-color">
+      <h3 className="mb-auto text-base tracking-wide text-primary-text-color">
         <span className="mr-2 text-primary-text-color/50 line-through">
           Rs. {(price * 1.2).toFixed(2)}
         </span>
         Rs. {price}
       </h3>
-      <ProductCardButton />
+      <ProductCardButton product={product} />
     </div>
   );
 };
 
-const ProductCardButton = () => {
-  return <button className="primary-btn">Add to cart</button>;
+const ProductCardButton = ({ product }) => {
+  const { cartItems, setCartItems } = useContext(MainContext);
+
+  return (
+    <button
+      onClick={() => setCartItems([...cartItems, product])}
+      className="primary-btn"
+    >
+      Add to cart
+    </button>
+  );
 };

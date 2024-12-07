@@ -10,17 +10,24 @@
 :root {
   --primary-bg-color: 21, 21, 21;
   --secondary-bg-color: 255, 255, 255;
-  --darken-bg-color: 247, 247, 247;
+  --dusk-bg-color: 247, 247, 247;
+  --darken-bg-color: 227, 227, 227;
 
   --primary-text-color: 21, 21, 21;
   --secondary-text-color: 255, 255, 255;
+
+  --light-red-color: 232, 53, 53;
 
   --primary-border-color: 226, 226, 226;
   --secondary-border-color: 222, 222, 222;
 }
 
 .primary-btn {
-  @apply border-primary-text-color before:bg-primary-bg-color hover:text-secondary-text-color relative mt-2 w-full overflow-hidden border px-4 py-2 tracking-wide transition-all duration-200 before:absolute before:left-0 before:top-full before:z-[-1] before:h-full before:w-full before:transition-all before:duration-300 hover:before:top-0 lg:py-3;
+  @apply relative isolate mt-2 w-full overflow-hidden border border-primary-text-color px-4 py-2 tracking-wide text-primary-text-color transition-all duration-200 before:absolute before:left-0 before:top-full before:z-[-1] before:h-full before:w-full before:bg-primary-bg-color before:transition-all before:duration-300 hover:text-secondary-text-color hover:before:top-0 lg:py-3;
+}
+
+.secondary-btn {
+  @apply relative isolate mt-2 w-full overflow-hidden border border-primary-text-color bg-primary-bg-color px-4 py-2 tracking-wide text-secondary-text-color transition-all duration-200 before:absolute before:left-0 before:top-full before:z-[-1] before:h-full before:w-full before:bg-secondary-bg-color before:transition-all before:duration-300 hover:text-primary-text-color hover:before:top-0 lg:py-3;
 }
 
 .main-div {
@@ -28,5 +35,13 @@
 }
 
 .main-heading {
-  @apply text-primary-text-color py-5 text-center text-4xl font-medium tracking-wide md:text-5xl lg:text-6xl;
+  @apply py-5 text-center text-4xl font-medium tracking-wide text-primary-text-color md:text-5xl lg:text-6xl;
+}
+
+.offcanvas-heading {
+  @apply text-base font-medium uppercase tracking-wide text-primary-text-color;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
 }

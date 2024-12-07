@@ -5,9 +5,9 @@ import { HeaderButtonsRight } from "../headerComponents/HeaderButtonRight";
 
 export const Header = () => {
   return (
-    <header className="bg-primary-bg-color w-full px-[10px] py-2 md:px-[30px]">
+    <header className="w-full bg-primary-bg-color px-[10px] py-4 md:px-[30px]">
       <div className="mx-auto grid grid-cols-[1fr_auto_1fr] align-middle">
-        <button className="text-secondary-text-color text-2xl lg:hidden">
+        <button className="text-2xl text-secondary-text-color lg:hidden">
           <FiMenu />
         </button>
         <Logo />
